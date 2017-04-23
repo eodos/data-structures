@@ -1,21 +1,7 @@
 #ifndef LINKED_LIST_HPP
 #define LINKED_LIST_HPP
 
-template <class T>
-class Node
-{
-private:
-	T data;	
-
-public:
-	Node* next;
-
-	Node();
-	Node(T value);
-	Node(T value, Node* pNext);
-
-	T getData();
-};
+#include "node.hpp"
 
 template <class T>
 class LinkedList
