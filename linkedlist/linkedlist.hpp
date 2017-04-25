@@ -1,5 +1,5 @@
-#ifndef LINKED_LIST_HPP
-#define LINKED_LIST_HPP
+#ifndef LINKEDLIST_HPP
+#define LINKEDLIST_HPP
 
 #include "node.hpp"
 
@@ -21,6 +21,6 @@ public:
 	void print(void);
 };
 
-#include "linked_list.tpp"
+#include "linkedlist.tpp"
 
 #endif
