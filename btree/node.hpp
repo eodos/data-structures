@@ -8,11 +8,11 @@ private:
 	T data;
 
 public:
-	Node* next;
+	Node* left;
+	Node* right;
 
 	Node();
 	Node(T value);
-	Node(T value, Node* pNext);
 
 	T getData();
 };
