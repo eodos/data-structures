@@ -2,10 +2,12 @@
 
 #include <initializer_list>
 #include <algorithm>
+#include <stdexcept>
 
-template <typename T>
+template <typename T, typename A = std::allocator<T>>
 class vector {
 private:
+  A alloc;
   size_t sz;
   T* elem;
   size_t space;
@@ -35,10 +37,13 @@ public:
   T& operator[](int i) { return elem[i]; }
   const T& operator[](int i) const { return elem[i]; }
 
+  T& at(int i);
+  const T& at(int i) const;
+
   size_t size() const { return sz; }
   size_t capacity() const {return space; }
   void reserve(size_t);
-  void resize(size_t);
+  void resize(size_t, T = T());
   void push_back(T);
 
 

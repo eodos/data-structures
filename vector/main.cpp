@@ -26,7 +26,12 @@ int main(int argc, char const *argv[])
   print(v3);
   v3.push_back(9);
   print(v3);
-
+  try {
+    std::cout << v3.at(-1) << std::endl;
+  }
+  catch (std::out_of_range) {
+    std::cout << "ERROR: index out of bounds" << std::endl;
+  }
   return 0;
 }
 
