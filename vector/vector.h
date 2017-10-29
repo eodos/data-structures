@@ -3,6 +3,7 @@
 #include <initializer_list>
 #include <algorithm>
 #include <stdexcept>
+#include <memory>
 
 template <typename T, typename A = std::allocator<T>>
 class vector {

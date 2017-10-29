@@ -76,11 +76,11 @@ template <typename T, typename A>
 void vector<T, A>::reserve(size_t c)
 {
   if (c < space) return;
-  T* temp = alloc.allocate(c);
-  for (int i = 0; i < sz; ++i) { alloc.construct(&temp[i], elem[i]); }
+  std::unique_ptr<T*> temp = std::make_unique<T*>(alloc.allocate(c));
+  for (int i = 0; i < sz; ++i) { alloc.construct(&(*temp)[i], elem[i]); }
   for (int i = 0; i < sz; ++i) { alloc.destroy(&elem[i]); }
   alloc.deallocate(elem, space);
-  elem = temp;
+  elem = *temp.release();
   space = c;
 }
 
