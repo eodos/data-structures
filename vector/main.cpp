@@ -32,6 +32,10 @@ int main(int argc, char const *argv[])
   catch (std::out_of_range) {
     std::cout << "ERROR: index out of bounds" << std::endl;
   }
+  v3.erase(&v3[1]);
+  print(v3);  
+  v3.insert(&v3[2], 10);
+  print(v3);
   return 0;
 }
 

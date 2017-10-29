@@ -100,3 +100,34 @@ void vector<T, A>::push_back(T val)
   alloc.construct(&elem[sz], val);
   ++sz;
 }
+
+template <typename T, typename A>
+typename vector<T, A>::iterator vector<T, A>::insert(iterator p, const T& val)
+{
+  size_t i = p - this->begin();
+  if (sz == space) reserve(sz == 0 ? 8 : 2*sz);
+  // Copy last element into uninitialized space
+  alloc.construct(elem + sz, *(this->end() - 1));
+  ++sz;
+  iterator pp = this->begin() + i;
+  for (auto ii = this->end() - 1; ii != pp; --ii)
+  {
+    *(ii) = *(ii - 1);
+  }
+  // Insert new element
+  *(this->begin() + i) = val;
+  return pp;
+}
+
+template <typename T, typename A>
+typename vector<T, A>::iterator vector<T, A>::erase(iterator p)
+{
+  if (p == this->end()) return p;
+  for (auto i = p; i != this->end(); ++i)
+  {
+    *(i) = *(i + 1);
+  }
+  alloc.destroy(&*(this->end() - 1));
+  --sz;
+  return p;
+}

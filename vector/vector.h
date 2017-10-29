@@ -14,7 +14,6 @@ private:
   size_t space;
 
 public:
-
   // Constructors
   vector() : sz{0}, elem{nullptr}, space{0} {}
   explicit vector(size_t s);
@@ -47,9 +46,12 @@ public:
   void resize(size_t, T = T());
   void push_back(T);
 
+  using iterator = T*;
 
-
-
+  iterator begin() { return elem; }
+  iterator end() { return &elem[sz - 1]; }
+  iterator insert(iterator, const T&);
+  iterator erase(iterator);
 };
 
 #include "vector.inl"
